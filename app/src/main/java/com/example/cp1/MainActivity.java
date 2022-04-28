@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
                     Sala obj = new Sala();
                     obj.setIdSala(ID);
+                    obj.setNumero(Num);
                     obj.setCapacidad(Cap);
                     obj.setRecursos(Rec);
                     obj.setFechaSeparacion(Sep);
@@ -110,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<Sala> call, Response<Sala> response) {
                 if (response.isSuccessful()) {
                     Sala obj = response.body();
-                    mensajeAlert("Sala  : " + obj.getIdSala() + "== > " + obj.getNumero());
+                  mensajeAlert("Se registro");
                 }
             }
 

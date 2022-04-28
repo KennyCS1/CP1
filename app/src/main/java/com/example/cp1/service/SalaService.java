@@ -8,7 +8,7 @@ import retrofit2.http.POST;
 
 public interface SalaService {
 
-    @POST("Sala")
+    @POST("sala")
     public Call<Sala> insertaSala(@Body Sala obj);
 
 
