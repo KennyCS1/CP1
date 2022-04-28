@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -14,11 +15,18 @@ import com.example.cp1.util.ConnectionRest;
 import com.example.cp1.util.FunctionUtil;
 import com.example.cp1.util.ValidacionUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
+
+    ArrayAdapter<String> Adapter;
+    ArrayList<String> Sala = new ArrayList<String>();
+    List<Sala> lstSala = new ArrayList<Sala>();
 
 
     EditText txtIDSala, txtNumero, txtCapacidad, txtRecursos, txtfechaseparacion, txtfechaderegistro;
@@ -31,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Adapter = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, Sala);
 
         txtIDSala = findViewById(R.id.txtIDSala);
         txtNumero = findViewById(R.id.txtNumero);
@@ -88,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+
+
+
     }
 
     private void registra(Sala obj) {
@@ -97,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<Sala> call, Response<Sala> response) {
                 if (response.isSuccessful()) {
                     Sala obj = response.body();
-                    mensajeAlert("Editorial  : " + obj.getIdSala() + "== > " + obj.getNumero());
+                    mensajeAlert("Sala  : " + obj.getIdSala() + "== > " + obj.getNumero());
                 }
             }
 
